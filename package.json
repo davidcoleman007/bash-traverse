@@ -1,0 +1,73 @@
+{
+  "name": "bash-traverse",
+  "version": "0.6.0",
+  "description": "A comprehensive bash parser with rich AST output for transformation and analysis",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./ast": {
+      "types": "./dist/ast.d.ts",
+      "default": "./dist/ast.js"
+    },
+    "./traverse": {
+      "types": "./dist/traverse.d.ts",
+      "default": "./dist/traverse.js"
+    }
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "validate": "node test-build-validation.js",
+    "validate:quick": "node test-quick-validation.js",
+    "validate:current": "node test-current-functionality.js",
+    "progress": "node test-progress-tracker.js",
+    "debug:build": "node debug-build-parsing.js",
+    "lint": "eslint src/ --ext .ts",
+    "lint:fix": "eslint src/ --ext .ts --fix",
+    "format": "prettier --write src/",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "bash",
+    "shell",
+    "parser",
+    "ast",
+    "traverse",
+    "transform",
+    "codemod",
+    "syntax-tree"
+  ],
+  "author": "davidcoleman007",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.5.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git"
+  }
+}
