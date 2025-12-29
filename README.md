@@ -2,6 +2,15 @@
 
 A comprehensive bash parser with rich AST output for transformation and analysis, designed specifically for codemod tools like bashcodeshift.
 
+Bash-traverse was built to support safe, large-scale transformation of real-world bash scripts. 
+Existing parsers provide ASTs suitable for inspection, but fall short when round-trip fidelity, 
+structural preservation, and deterministic generation are required for codemod tooling and 
+automated refactors.
+
+**IMPORTANT**
+Status: Experimental. Designed for real-world bash transformation, but not yet stable 
+enough to treat as a drop-in engine for production refactors.
+
 ## Features
 
 - **Rich AST Structure**: Detailed node types with location information, similar to Babel/jscodeshift
@@ -16,7 +25,8 @@ A comprehensive bash parser with rich AST output for transformation and analysis
 
 ## 🚀 Current Status
 
-This project is **production-ready** with comprehensive bash parsing and generation capabilities. All major bash features are fully implemented and tested, including:
+Many common structures are supported with comprehensive bash parsing and generation 
+capabilities. All major bash features are fully implemented and tested, including:
 
 - ✅ **Basic Commands and Pipelines** - Full support for simple and complex command structures
 - ✅ **Control Structures** - Complete if/then/else, for, while, until, case/esac support
@@ -35,15 +45,19 @@ The implementation has been validated with production bash scripts including:
 - Complex CI/CD pipelines with multiple line continuations
 - Docker and Kubernetes deployment scripts
 - Build automation scripts with heredocs and variable expansions
-- All scenarios achieve **100% round-trip fidelity**
+
+For these inputs, parse → generate round-trips preserve structure and behavior, 
+with no observed fidelity loss for supported constructs.
+
 
 ### 📊 Syntax Coverage
 
-For a comprehensive overview of supported bash features, see **[Syntax Coverage Documentation](docs/syntax-coverage.md)**:
-- **98%+ coverage** of commonly used bash syntax
-- **100% coverage** of core bash features
-- **Complete documentation** of supported and unsupported features
-- **Real-world validation** with production scripts
+Supported and unsupported constructs are tracked explicitly and evolve as the parser and generator mature. For details, see **[Syntax Coverage Documentation](docs/syntax-coverage.md)**.
+
+### Known Limitations
+
+- Certain rarely used bash edge cases and shell-specific extensions are not yet fully supported.
+- Interactive shell behaviors and runtime-dependent expansions are intentionally out of scope.
 
 ## Installation
 
